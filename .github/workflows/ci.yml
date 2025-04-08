@@ -1,95 +1,93 @@
-# name: "Nextjs Build with Cashing & Artifacts"
+name: "Nextjs Build with Cashing & Artifacts"
 
-# on:
-#     push:
-#         branches:
-#             - main
+on:
+    push:
+        branches:
+            - main
         
-#     pull_request:
-#       branches:
-#         - main
+    pull_request:
+      branches:
+        - main
 
-# jobs:
-#     build-and-test:
-#         runs-on: ubuntu-latest
-#         steps:
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+        steps:
 
-#             - name: "Clone repository"
-#               uses: actions/checkout@v3
+            - name: "Clone repository"
+              uses: actions/checkout@v3
 
 
-#             - name: "Setup node version"
-#               uses: actions/setup-node@v4
-#               with:
-#                 node-version: '22.14.0'
-#                 cache: "npm"
+            - name: "Setup node version"
+              uses: actions/setup-node@v4
+              with:
+                node-version: '22.14.0'
+                cache: "npm"
 
-#             - name: "Check node version"
-#               run: |
-#                echo "Running check node version...."
-#                node --version
+            - name: "Check node version"
+              run: |
+               echo "Running check node version...."
+               node --version
 
             
 
-#             - name: "List directories"
-#               run: ls
+            - name: "List directories"
+              run: ls
 
-#             - name: "Install dependencies"
-#               run: |
-#                echo "Running install dependencies"
-#                npm install
+            - name: "Install dependencies"
+              run: |
+               echo "Running install dependencies"
+               npm install
 
-#             - name: "List directories"
-#               run: ls
+            - name: "List directories"
+              run: ls
 
-#             - name: Setup Prisma Environment
-#               run: |
-#                 echo "DATABASE_URL=$DATABASE_URL" > .env
-#             - name: Prisma Generate
-#               run: npx prisma generate
+            - name: Setup Prisma Environment
+              run: |
+                echo "DATABASE_URL=$DATABASE_URL" > .env
+            - name: Prisma Generate
+              run: npx prisma generate
 
-#             - name: "Install --save-dev"
-#               run: npm install eslint-plugin-react-hooks --save-dev
+            - name: "Install --save-dev"
+              run: npm install eslint-plugin-react-hooks --save-dev
 
-#             - name: "Run lint"
-#               run: npm run lint
-#               env: 
-#                 CI: true
+            - name: "Run lint"
+              run: npm run lint
 
-#             - name: "Run test"
-#               run: npm run test
+            - name: "Run test"
+              run: npm run test
 
-#             - name: "Run build"
-#               run: |
-#                 echo "Running build the project...."
-#                 npm run build
+            - name: "Run build"
+              run: |
+                echo "Running build the project...."
+                npm run build
             
-#             # - name: "List directories after build"
-#             #   run: ls -la
+            # - name: "List directories after build"
+            #   run: ls -la
             
-#             # - name: "Verify .next directory"
-#             #   run: ls -la .next || echo ".next directory not found"
+            # - name: "Verify .next directory"
+            #   run: ls -la .next || echo ".next directory not found"
             
-#             - name: "Save build artifacts"
-#               uses: actions/upload-artifact@v4
-#               with:
-#                 name: nextjs-build
-#                 include-hidden-files: true
-#                 path: .next/
-#                 # if-no-files-found: warn
+            - name: "Save build artifacts"
+              uses: actions/upload-artifact@v4
+              with:
+                name: nextjs-build
+                include-hidden-files: true
+                path: .next/
+                # if-no-files-found: warn
 
-#     security-check:
-#         name: "Security Check"
-#         runs-on: ubuntu-latest
+    security-check:
+        name: "Security Check"
+        runs-on: ubuntu-latest
 
-#         steps:
-#             - name: "Check for security"
-#               run: |
-#                 echo "Running security checks....."
-#                 sleep 5s;
-#                 echo "Running security checks....."
-#                 sleep 5s;
-#                 echo "Running security checks....."
-#                 sleep 5s;
-#                 echo "Running security checks....."
-#                 sleep 5s;
+        steps:
+            - name: "Check for security"
+              run: |
+                echo "Running security checks....."
+                sleep 5s;
+                echo "Running security checks....."
+                sleep 5s;
+                echo "Running security checks....."
+                sleep 5s;
+                echo "Running security checks....."
+                sleep 5s;
