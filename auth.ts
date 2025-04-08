@@ -22,8 +22,8 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       },
     }),
     Google({
-      clientId: process.env.GOOGLE_AUTH_ID,
-      clientSecret: process.env.GOOGLE_AUTH_SECRET,
+      clientId: `${process.env.GOOGLE_AUTH_ID}`,
+      clientSecret: `${process.env.GOOGLE_AUTH_SECRET}`,
       authorization: {
         prisma: {
           prompt: "consent",
